@@ -17,6 +17,7 @@ module.exports = {
     node: true,
     jest: true,
   },
+  ignores: ["global.d.ts", "node_modules"],
   rules: {
     "unused-imports/no-unused-imports": "error",
     "@typescript-eslint/triple-slash-reference": "off",
