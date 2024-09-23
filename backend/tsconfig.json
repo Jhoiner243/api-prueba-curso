@@ -30,5 +30,7 @@
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
     "noImplicitOverride": true
-  }
+  },
+  "include": ["src/**/*", "serverListener.ts"],
+  "exclude": ["node_modules", "dist"]
 }
