@@ -1,5 +1,5 @@
 import { useEffect, useState, FormEvent } from "react";
-
+import FormRegister from "./components/FormRegister";
 const App = (): React.JSX.Element => {
   const [count, setCount] = useState<number>(0);
   const [data, setData] = useState<string>("");
@@ -14,6 +14,7 @@ const App = (): React.JSX.Element => {
           headers: {
             "Content-Type": "application/json",
           },
+          
         });
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
@@ -74,7 +75,9 @@ const App = (): React.JSX.Element => {
         />
         <button type="submit">Greet</button>
       </form>
+      <FormRegister />
     </div>
+    
   );
 };
 
