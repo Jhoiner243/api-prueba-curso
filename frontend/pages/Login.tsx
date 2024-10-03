@@ -5,8 +5,8 @@ const Login  = () => {
     const {data, HandleChange, onSubmit, FormLogin} = useLogin();
     return(
         <div>
-            <h1>LOGIN</h1>
-            <Form method="post" onSubmit={onSubmit}>
+            <h2>LOGIN</h2>
+            <Form className="page" method="post" onSubmit={onSubmit}>
                 <label>Email:
                     <input type="email" 
                     name="email"

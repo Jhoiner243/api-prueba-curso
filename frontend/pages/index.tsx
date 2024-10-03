@@ -21,7 +21,7 @@ function SubmitButton() {
         <div>
           <Outlet />
           <h2>Register</h2>
-          <Form method="post" onSubmit={onSubmit}>
+          <Form className="page" method="post" onSubmit={onSubmit}>
             <label>
               Name:
               <input
