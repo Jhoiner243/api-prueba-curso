@@ -1,6 +1,7 @@
 import express, { Application, json } from "express"
 import cors from "cors"
 import { router } from "./router/router"
+import bodyParser from "body-parser"
 
 export const server: Application = express()
 

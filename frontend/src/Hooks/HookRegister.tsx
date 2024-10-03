@@ -1,4 +1,5 @@
 import React, { useState, useEffect, FormEvent } from "react";
+import {  useNavigate } from "react-router-dom";
 
 // Define la interfaz para los datos del formulario
 interface FormRegisterProps {
@@ -7,9 +8,12 @@ interface FormRegisterProps {
   password: string;
 }
 
-const FormRegisterComponent = (): React.JSX.Element => {
+
+
+export const useRegister = () => {
   // Estado para los mensajes del servidor
   const [data, setData] = useState<string>("");
+  const navigate = useNavigate();
   // Estado para los valores del formulario
   const [formValues, setFormValues] = useState<FormRegisterProps>({
     name: "",
@@ -25,6 +29,8 @@ const FormRegisterComponent = (): React.JSX.Element => {
       [name]: value,
     });
   };
+
+  
 
   // Función que se ejecuta al enviar el formulario
   const onSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
@@ -42,6 +48,7 @@ const FormRegisterComponent = (): React.JSX.Element => {
       }
       const data = await res.json();
       setData(data.message);
+      navigate('/Login')
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -68,49 +75,5 @@ const FormRegisterComponent = (): React.JSX.Element => {
     };
     fetchData();
   }, []);
-
-  return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={onSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={formValues.name}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={formValues.email}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={formValues.password}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
-        <button type="submit">Register</button>
-      </form>
-      {data && <p>{data}</p>}
-    </div>
-  );
-};
-
-export default FormRegisterComponent;
+  return {data, onSubmit, handleChange, formValues}
+}

@@ -39,9 +39,10 @@ export const POSTLogin= async (req:Request, res:Response): Promise<void> =>{
         return;
     }
 
-    res.status(200).json({message: 'Login successful'})
+    res.status(200).json({message: `Inicio de sesión exitoso`})
 }catch(error){
-    res.status(500).json({message: 'Internal server error'})
+    console.error("Error en el servidor:", error); // Verás el error en la consola del servidor
+  
 }
 
 }
